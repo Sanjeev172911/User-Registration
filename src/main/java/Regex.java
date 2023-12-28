@@ -25,7 +25,7 @@ public class Regex {
     }
 
     public String passwordRegex(){
-        String regex="^.*[A-Z].*$";
+        String regex="^.*[0-9].*$";
         return regex;
     }
 

@@ -25,12 +25,12 @@ public class Regex {
     }
 
     public String passwordRegex(){
-        String regex="^.*[0-9].*$";
+        String regex="^[A-Za-z0-9]*[^A-Za-z0-9]{1}[A-Za-z0-9]$";
         return regex;
     }
 
-    public void check(String input,String regex,String code){
-        if(pm.isAMatch(input,regex) && (code.equals("Password")) && input.length()>=8){
+    public void check(String input,String regex){
+        if(pm.isAMatch(input,regex)){
             System.out.println(input + " is valid");
         }else{
             System.out.println(input + " is not valid");

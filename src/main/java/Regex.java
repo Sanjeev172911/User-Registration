@@ -1,6 +1,6 @@
-public class UserNameValidator {
+public class Regex {
     PatternMatcher pm;
-    UserNameValidator(){
+    Regex(){
         pm=new PatternMatcher();
     }
 
@@ -11,6 +11,12 @@ public class UserNameValidator {
 
     public String lastNameRegex(){
         String regex="^[A-Z]{1}[a-z]{2,}$";
+        return regex;
+    }
+
+    public String emailRegex(){
+//        String regex = "^[a-zA-Z0-9]+([._%+-]+[a-zA-Z0-9]+)*@[a-zA-Z0-9]+(\\.[a-zA-Z]{2,})*(\\.[a-zA-Z]{2,})$";
+        String regex="^[A-Za-z_-]+[A-Za-z0-9_+-]*.{0,1}[A-Za-z0-9_+-]*@{1}[A-Za-z0-9_-]{2,}.[A-Za-z]{2,}.{0,1}[A-Za-z]{2,}$";
         return regex;
     }
 

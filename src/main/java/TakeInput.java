@@ -8,7 +8,8 @@ public class TakeInput {
     }
 
     public String input(){
-        return S.next();
+        return S.nextLine();
+
     }
 
 }

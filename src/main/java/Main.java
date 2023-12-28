@@ -11,13 +11,16 @@ public class Main {
 //        regexp=regex.lastNameRegex();
 //        input=cin.input();
 //        regex.check(input,regexp);
+//
+//
+//        System.out.println("Enter Email");
+//        String emailRegex=regex.emailRegex();
+//        input=cin.input();
+//        regex.check(input,emailRegex);
 
-        for(int i=0;i<15;i++){
-            System.out.println("Enter Email");
-            String emailRegex=regex.emailRegex();
-            String input=cin.input();
-            regex.check(input,emailRegex);
-        }
-
+        System.out.println("Enter Mobile Number");
+        String mobileNumberRegex=regex.mobileNumberRegex();
+        String input=cin.input();
+        regex.check(input,mobileNumberRegex);
     }
 }

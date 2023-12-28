@@ -15,8 +15,12 @@ public class Regex {
     }
 
     public String emailRegex(){
-//        String regex = "^[a-zA-Z0-9]+([._%+-]+[a-zA-Z0-9]+)*@[a-zA-Z0-9]+(\\.[a-zA-Z]{2,})*(\\.[a-zA-Z]{2,})$";
         String regex="^[A-Za-z_-]+[A-Za-z0-9_+-]*.{0,1}[A-Za-z0-9_+-]*@{1}[A-Za-z0-9_-]{2,}.[A-Za-z]{2,}.{0,1}[A-Za-z]{2,}$";
+        return regex;
+    }
+
+    public String mobileNumberRegex(){
+        String regex="^[0-9]{1,3}\\s[0-9]{10}$";
         return regex;
     }
 

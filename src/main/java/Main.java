@@ -18,8 +18,13 @@ public class Main {
 //        input=cin.input();
 //        regex.check(input,emailRegex);
 
-        System.out.println("Enter Mobile Number");
-        String mobileNumberRegex=regex.mobileNumberRegex();
+//        System.out.println("Enter Mobile Number");
+//        String mobileNumberRegex=regex.mobileNumberRegex();
+//        String input=cin.input();
+//        regex.check(input,mobileNumberRegex);
+
+        System.out.println("Enter Password");
+        String mobileNumberRegex=regex.passwordRegex();
         String input=cin.input();
         regex.check(input,mobileNumberRegex);
     }

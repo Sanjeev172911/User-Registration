@@ -24,6 +24,11 @@ public class Regex {
         return regex;
     }
 
+    public String passwordRegex(){
+        String regex="^[A-Za-z]{8,}$";
+        return regex;
+    }
+
     public void check(String input,String regex){
         if(pm.isAMatch(input,regex)){
             System.out.println(input + " is valid");

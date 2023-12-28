@@ -24,8 +24,8 @@ public class Main {
 //        regex.check(input,mobileNumberRegex);
 
         System.out.println("Enter Password");
-        String mobileNumberRegex=regex.passwordRegex();
+        String mobileNumberRegex=regex.passwordRegexRule1();
         String input=cin.input();
-        regex.check(input,mobileNumberRegex);
+        regex.check(input,4);
     }
 }

@@ -25,12 +25,12 @@ public class Regex {
     }
 
     public String passwordRegex(){
-        String regex="^[A-Za-z]{8,}$";
+        String regex="^.*[A-Z].*$";
         return regex;
     }
 
-    public void check(String input,String regex){
-        if(pm.isAMatch(input,regex)){
+    public void check(String input,String regex,String code){
+        if(pm.isAMatch(input,regex) && (code.equals("Password")) && input.length()>=8){
             System.out.println(input + " is valid");
         }else{
             System.out.println(input + " is not valid");

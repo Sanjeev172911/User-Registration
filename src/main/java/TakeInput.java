@@ -8,6 +8,8 @@ public class TakeInput {
     }
 
     public String input(){
+        System.out.println("Enter Data : ");
         return S.next();
     }
+
 }

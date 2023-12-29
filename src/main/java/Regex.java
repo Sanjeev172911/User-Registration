@@ -10,7 +10,7 @@ public class Regex {
     }
 
     public String emailRegex(){
-        String regex="^[A-Za-z_-]+[A-Za-z0-9_+-]*.{0,1}[A-Za-z0-9_+-]*@{1}[A-Za-z0-9_-]{2,}.[A-Za-z]{2,}.{0,1}[A-Za-z]{2,}$";
+        String regex="^[A-Za-z_-]+[A-Za-z0-9_+-]*\\.{0,1}[A-Za-z0-9_+-]+@{1}[A-Za-z0-9_-]{1,}\\.[A-Za-z]{2,}\\.{0,1}[A-Za-z]+$";
         return regex;
     }
 

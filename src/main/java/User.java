@@ -1,7 +1,6 @@
 import java.util.Scanner;
 
 public class User {
-    Scanner input=new Scanner(System.in);
     Regex regex;
     PatternMatcher patternMatcher;
     String firstName;
@@ -10,19 +9,9 @@ public class User {
     String email;
     String password;
 
-    User(){
+    User(String fName,String lName,String  pNumber,String email,String password){
         regex=new Regex();
         patternMatcher=new PatternMatcher();
-        System.out.println("Enter First Name: ");
-        String fName= input.nextLine();
-        System.out.println("Enter Last Name: ");
-        String lName=input.nextLine();
-        System.out.println("Enter your PhoneNumber");
-        String pNumber=input.nextLine();
-        System.out.println("Enter your Email");
-        String email=input.nextLine();
-        System.out.println("Enter your Password");
-        String password=input.nextLine();
 
         this.firstName=fName;
         this.lastName=lName;

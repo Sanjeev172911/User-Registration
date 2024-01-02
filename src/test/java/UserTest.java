@@ -1,81 +1,108 @@
 import org.junit.jupiter.api.*;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class UserTest {
-    static User user1,user2,user3,user4;
-
-    static {
-        user1=null;
-    }
+    static User user;
 
     @BeforeAll
     public static void initializeUser(){
         System.out.println("Hit this block");
-        user1=new User("Sanjeev","Kumar","91 8102051085","wwsanjeev1729@gmail.com","fASd12#ad");
-        user2=new User("Sam","Kumar","9 9835558626","wwsanjeev.asd1729@gma.il.com","d12#adD1");
-        user3=new User("anjee","umar","8102051085","1wwsanjeev1729@gmail.com","fASd");
-        user4=new User("Sa"," ","918102051085","wwsanjeev1729@gmail.com.in.im","fASd$12#ad");
-
+        user=new User();
 
     }
 
-    @Test
-    public void validatingFirstNameHappyTestCase(){
-        assertTrue(user1.validateFirstName());
-        assertTrue(user2.validateFirstName());
+    @ParameterizedTest
+    @ValueSource(strings = {"Sanjeev","Sam"})
+    public void validatingFirstNameHappyTestCase(String firstName){
+        assertTrue(user.validateFirstName(firstName));
     }
 
-    @Test
-    public void validatingFirstNameHappySadCase(){
-        assertFalse(user3.validateFirstName());
-        assertFalse(user4.validateFirstName());
+    @ParameterizedTest
+    @ValueSource(strings = {"Sa","sam","srushti","amMy"})
+    public void validatingFirstNameSadCase(String firstName){
+        InvalidArgumentException exception=assertThrows(InvalidArgumentException.class,
+                ()->user.validateFirstName(firstName));
+
+        assertEquals("First Name should start with Cap and minimum of length 3", exception.getMessage());
     }
 
-    @Test
-    public void validatingLastNameHappyTestCase(){
-        assertTrue(user1.validateLastName());
-        assertTrue(user2.validateLastName());
+    @ParameterizedTest
+    @ValueSource(strings = {"Kumar","Jenner","Kims"})
+    public void validatingLastNameHappyTestCase(String lastName){
+        assertTrue(user.validateLastName(lastName));
     }
 
-    @Test
-    public void validatingLastNameHappySadCase(){
-        assertFalse(user3.validateLastName());
-        assertFalse(user4.validateLastName());
+    @ParameterizedTest
+    @ValueSource(strings = {"Ka","kam","pahadi","pmMy"})
+    public void validatingLastNameSadCase(String lastName){
+        InvalidArgumentException exception=assertThrows(InvalidArgumentException.class,
+                ()->user.validateLastName(lastName));
+
+        assertEquals("Last Name should start with Cap and minimum of length 3", exception.getMessage());
     }
 
-    @Test
-    public void validatingPhoneNumberHappyTestCase(){
-        assertTrue(user1.validatePhoneNumber());
-        assertTrue(user2.validatePhoneNumber());
+
+    @ParameterizedTest
+    @ValueSource(strings = {"91 8102051085","1 8294562789","231 9871234560"})
+    public void validatingPhoneNumberHappyTestCase(String phoneNumber){
+       assertTrue(user.validatePhoneNumber(phoneNumber));
     }
 
-    @Test
-    public void validatingPhoneNumberHappySadCase(){
-        assertFalse(user3.validatePhoneNumber());
-        assertFalse(user4.validatePhoneNumber());
+    @ParameterizedTest
+    @ValueSource(strings = {"918102051085","8294562789","231 987123460","231987123460"})
+    public void validatingPhoneNumberSadCase(String phoneNumber){
+        InvalidArgumentException exception=assertThrows(InvalidArgumentException.class,
+                ()->{user.validatePhoneNumber(phoneNumber);});
+
+        assertEquals("Invalid Phone Number",exception.getMessage());
     }
 
-    @Test
-    public void validatingPasswordHappyTestCase(){
-        assertTrue(user1.validatePassword());
-        assertTrue(user2.validatePassword());
+    @ParameterizedTest
+    @ValueSource(strings = {"asdfW12@j","12345As@iuy","dfgAD@19","zxcVBN1@1"})
+    public void validatingPasswordHappyTestCase(String password){
+        assertTrue(user.validatePassword(password));
     }
 
-    @Test
-    public void validatingPasswordHappySadCase(){
-        assertFalse(user3.validatePassword());
-        assertFalse(user4.validatePassword());
+    @ParameterizedTest
+    @ValueSource(strings = {"asdfW12j","As@iuy","dfAD@19","zxcasdfg1@1","@#dfgA12A"})
+    public void validatingPasswordSadTestCase(String password){
+        try{
+            user.validatePassword(password);
+            fail("Expected exception, but the code executed successfully");
+        }catch (InvalidArgumentException e){
+            assertEquals("Invalid Password",e.getMessage());
+        }
     }
 
-    @Test
-    public void validatingEmailHappyTestCase(){
-        assertTrue(user1.validateEmail());
-        assertTrue(user2.validateEmail());
+    @ParameterizedTest
+    @ValueSource(strings={"abc@yahoo.com",
+            "abc-100@yahoo.com",
+            "abc.100@yahoo.com",
+            "abc111@abc.com"})
+    public void validatingEmailHappyTestCase(String email){
+        assertTrue(user.validateEmail(email));
+
     }
 
-    @Test
-    public void validatingEmailHappySadCase(){
-        assertFalse(user3.validateEmail());
-        assertFalse(user4.validateEmail());
+    @ParameterizedTest
+    @ValueSource(strings={"abc",
+            "abc@.com.my",
+            "abc123@gmail.ab.",
+            "abc123@.com",
+            "abc123@.com.com",
+            ".abc@abc.com",
+            "abc()*@gmail.com"})
+    public void validatingEmailSadTestCase(String email){
+        try{
+            user.validateEmail(email);
+            fail("Expected exception, but the code executed successfully");
+        }catch(InvalidArgumentException e){
+            assertEquals("Invalid Email",e.getMessage());
+        }
     }
+
+
 }

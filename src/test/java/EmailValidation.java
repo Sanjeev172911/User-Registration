@@ -19,6 +19,7 @@ public class EmailValidation {
         patternMatcher=new PatternMatcher();
         regex=new Regex();
     }
+
     static final String []sadData={
             "abc",
             "abc@.com.my",

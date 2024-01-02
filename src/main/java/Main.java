@@ -13,10 +13,5 @@ public class Main {
         String email=input.nextLine();
         System.out.println("Enter your Password");
         String password=input.nextLine();
-
-        User user1=new User(fName,lName,pNumber,email,password);
-
-
-        user1.isValidUserDetails();
     }
 }
